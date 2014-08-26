@@ -1,0 +1,57 @@
+html { 
+  background: url(../images/horse.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+
+.form {
+	opacity:0.4;
+	position:absolute;
+	right:5px;
+	font-family:Garamond;
+	font-size:12px;
+}
+
+input[type=submit] {
+	font-size:10px;
+	font-family:Garamond;
+}
+
+.flash {
+	font-family:Garamond;
+	font-size:12px;
+	opacity:0.4;
+}
+
+p {
+	font-size:10px;
+	font-family:Garamond;
+}
+
+.new_users {
+	width:50px;
+	height:20px;
+	border:solid white 1px;
+	font-family:Garamond;
+	font-size:10px;
+}
+
+ul {
+	list-style-type:none;
+	font-family:Garamond;
+	font-size:12px;
+	opacity:0.4;
+	margin-left:-40px;
+}
+
+ul li {
+	display:inline;
+}
+
+a {
+	text-decoration:none;
+	color:black;
+}
+
+a:hover {
+	color:white;
+}
