@@ -7,28 +7,33 @@ enable :sessions
 use Rack::Flash, :sweep => true
 set :session, true
 set :database, "sqlite3:project.sqlite3"
-configure(:development){set :
-database, "sqlite:///project.sqlite3"}
+# configure(:development){set :
+# database, "sqlite:///project.sqlite3"}
 
 require './models'
 
-get "/"  do
+def current_user
+  if session[:user_id]
+    @current_user = User.find(session[:user_id])
+  end
+end
+
+get "/" do
 	@user = current_user if current_user
 	erb :home
 end
 
-get "/fail" do
-	erb :fail
-end
+# get "/" do
+#   @post = Post.all
+#   erb :home
+# end
+
+# get "/fail" do
+# 	erb :fail
+# end
 
 get "/sign-up" do
 	erb :sign_up
-end
-
-def current_user
-	if session[:user_id]
-		@current_user = User.find(session[:user_id])
-	end
 end
 
 # get "/sign-out" do
@@ -46,8 +51,8 @@ end
 post '/sign-in' do
  	@user = User.where(username: params[:username]).first
  	if @user && @user.password == params[:password]
- 		# session[:user_id] = @user.id
- 		flash[:notice] = "Welcome back " + @user.username + "!"
+ 		session[:user_id] = @user.id
+ 		flash[:notice] = "Welcome back, " + @user.username + "!"
  		redirect "/"
  	else
  		redirect "/fail"
@@ -81,3 +86,16 @@ get "/posts/:id" do
   @title = @post.title
   erb :"posts/show"
 end
+
+# get "/" do
+#   @posts = Post.order("created_at DESC")
+#   erb :home
+# end
+
+get "/profile/:id" do
+  session[:user_id] = @user.id
+  @user = User.find(params[:id])
+  erb :"/profile"
+end
+
+

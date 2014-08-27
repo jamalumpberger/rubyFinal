@@ -3,16 +3,21 @@
 	<head>
 		<title>Sup</title>
 		<link rel="stylesheet" type="text/css" href="/stylesheets/style.css" />
+		<link href='http://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
 	</head>
 	<body>
 		<%=yield %>
-		<div class="flash">
-		<%=flash[:notice] if flash[:notice] %>
-		</div>
 		<ul>
     		<li><a href="/">Home</a></li>
     		<li> | </li>         
-    		<li><a href="/posts/new">New Post</a></li>                  
+    		<li><a href="/posts/new">New Post</a></li>
+    		<li> | </li>
+    		<li><a href="/posts/sign-out">Profile</a></li>
+    		<li> | </li>
+    		<li><a href="/posts/profile">Sign Out</a></li> 
 		</ul>
+		<div class="flash">
+		<%=flash[:notice] if flash[:notice] %>
+		</div>
 	</body>
 </html>
